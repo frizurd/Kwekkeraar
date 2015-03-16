@@ -11,10 +11,12 @@
         <many-to-one name="account" class="Model.Account" fetch="select">
             <column name="accountid" not-null="true" />
         </many-to-one>
+        
         <property name="message" type="string">
             <column name="message" />
         </property>
-        <set name="accounts" inverse="true" table="kwaiks">
+        
+        <set name="accounts" inverse="false" table="kwaiks">
             <key>
                 <column name="kwekid" not-null="true" />
             </key>

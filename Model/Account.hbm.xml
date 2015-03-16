@@ -25,7 +25,7 @@
         <column name="accountfromid" not-null="true"/>
       </many-to-many>
     </set>
-    <set inverse="false" name="kweks" table="kwaiks">
+    <set inverse="true" name="kweks" table="kwaiks">
       <key>
         <column name="accountid" not-null="true"/>
       </key>

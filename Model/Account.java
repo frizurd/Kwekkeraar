@@ -2,7 +2,9 @@ package Model;
 // Generated Sep 30, 2014 12:09:39 PM by Hibernate Tools 3.2.1.GA
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -21,7 +23,6 @@ public class Account  implements java.io.Serializable {
     public Account() {
     }
 
-	
     public Account(String username, String password, int accounttype) {
         this.username = username;
         this.password = password;
@@ -77,13 +78,27 @@ public class Account  implements java.io.Serializable {
     public void setKweks(Set kweks) {
         this.kweks = kweks;
     }
+    
+    public boolean favoriteCheck(Account account) {
+        boolean isFavorite = favorites.contains(account);
+        return isFavorite;
+    }
 
+    public Set removeFavorite(Account account) {
+        favorites.remove(account);
+        return favorites;
+    }
+    
     public Set getFavorites() {
         return favorites;
     }
 
     public void setFavorites(Set favorites) {
         this.favorites = favorites;
+    }
+    
+    public List<Account> getListFromSet() {
+        return new ArrayList<Account>(favorites);
     }
 
     @Override
