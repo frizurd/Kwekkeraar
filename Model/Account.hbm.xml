@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 30, 2014 12:09:40 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="kwek" name="Model.Account" table="account">
+    <id name="accountid" type="int">
+      <column name="accountid"/>
+      <generator class="identity"/>
+    </id>
+    <property name="username" type="string">
+      <column length="45" name="username" not-null="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="45" name="password" not-null="true"/>
+    </property>
+    <property name="accounttype" type="int">
+      <column name="accounttype" not-null="true"/>
+    </property>
+    <set inverse="false" name="favorites" table="favorites">
+      <key>
+        <column name="accounttoid" not-null="true"/>
+      </key>
+      <many-to-many entity-name="Model.Account">
+        <column name="accountfromid" not-null="true"/>
+      </many-to-many>
+    </set>
+    <set inverse="false" name="kweks" table="kwaiks">
+      <key>
+        <column name="accountid" not-null="true"/>
+      </key>
+      <many-to-many entity-name="Model.Kwek">
+        <column name="kwekid" not-null="true"/>
+      </many-to-many>
+    </set>
+  </class>
+</hibernate-mapping>
